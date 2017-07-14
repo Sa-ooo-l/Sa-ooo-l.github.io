@@ -27,7 +27,7 @@ p {
     font-size: 1.2em;
     line-height: 1.4em;
     color: #555;
-    padding: 0px;
+    padding: 0px 0 0 0;
     margin: 0px 0.5em 0.75em 0px;
 }
 ol {
@@ -144,9 +144,11 @@ section#sidebar {
     display: block;
     background-color: white;
     border-left: black solid 5px;
+    margin: 0 0 0 0;
 }
 .side-image{
-    width: 100%;
+    width: 93%;
+    margin: 0 5px 0 5px;
 }
 /*OKATTYYYOKATTYYYYOKATTYYYYOKATTYYYYOKATTYYYYY*/
 /*Main Section*/
