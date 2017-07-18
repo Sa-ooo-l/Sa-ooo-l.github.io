@@ -1,0 +1,16 @@
+
+function firepellet () {
+
+    if (game.time.now > pelletTime)
+    {
+        pellet = pellets.getFirstExists(false);
+
+        if (bullet)
+        {
+            bullet.reset(sprite.x + 6, sprite.y - 8);
+            bullet.body.velocity.x = -300;
+            bulletTime = game.time.now + 250;
+        }
+    }
+
+}
