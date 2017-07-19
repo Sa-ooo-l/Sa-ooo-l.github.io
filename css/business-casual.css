@@ -30,6 +30,9 @@ p {
     line-height: 1.6;
     color: #000;
 }
+.container {
+    text-align: center;
+}
 
 hr {
     max-width: 400px;
