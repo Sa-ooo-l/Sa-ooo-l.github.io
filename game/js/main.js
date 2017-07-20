@@ -129,7 +129,7 @@ PlayState.init = function (data) {
     this.keys = this.game.input.keyboard.addKeys({
         left: Phaser.KeyCode.LEFT,
         right: Phaser.KeyCode.RIGHT,
-        up: Phaser.KeyCode.UP
+        up: Phaser.KeyCode.UP,
     });
 
     this.keys.up.onDown.add(function () {
@@ -161,7 +161,6 @@ PlayState.preload = function () {
     this.game.load.image('invisible-wall', 'images/invisible_wall.png');
     this.game.load.image('icon:coin', 'images/coin_icon.png');
     this.game.load.image('key', 'images/key.png');
-    this.game.load.image('bullet', 'images/bullet.png')
 
     this.game.load.spritesheet('coin', 'images/coin_animated.png', 22, 22);
     this.game.load.spritesheet('spider', 'images/spider.png', 42, 32);
@@ -175,7 +174,6 @@ PlayState.preload = function () {
     this.game.load.audio('sfx:key', 'audio/key.wav');
     this.game.load.audio('sfx:door', 'audio/door.wav');
 };
-
 
 PlayState.create = function () {
     // create sound entities
@@ -211,7 +209,8 @@ PlayState._handleCollisions = function () {
     this.game.physics.arcade.overlap(this.hero, this.coins, this._onHeroVsCoin,
         null, this);
     this.game.physics.arcade.overlap(this.hero, this.spiders,
-        this._onHeroVsEnemy, null, this);
+        this._onHeroVsEnemy, null, this); 
+
     this.game.physics.arcade.overlap(this.hero, this.key, this._onHeroVsKey,
         null, this);
     this.game.physics.arcade.overlap(this.hero, this.door, this._onHeroVsDoor,
@@ -231,7 +230,8 @@ PlayState._handleInput = function () {
     }
     else { // stop
         this.hero.move(0);
-    } 
+    }
+ 
 };
 
 PlayState._loadLevel = function (data) {
@@ -336,10 +336,7 @@ PlayState._onHeroVsEnemy = function (hero, enemy) {
         hero.bounce();
         enemy.die();
         this.sfx.stomp.play();
-    } if(hero.shoot) {
-        bullets.hit();
-        enemy.die();
-    }
+    } 
     else { // game over -> restart the game
         this.sfx.stomp.play();
         this.game.state.restart(true, false, {level: this.level});
@@ -376,6 +373,8 @@ PlayState._createHud = function () {
     this.hud.add(this.keyIcon);
     this.hud.position.set(10, 10);
 };
+
+
 myAudio = new Audio('audio/bgm.mp3'); 
 myAudio.addEventListener('ended', function() {
    this.currentTime = 0;
